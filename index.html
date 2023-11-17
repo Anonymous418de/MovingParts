@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- <meta name="description"
+        content="MovingParts reconstruct dynamic neural radiance fields with 3D part discovery from monocular image sequence."> -->
+  <!-- <meta name="keywords" content="MovingParts, D-NeRF, NeRF"> -->
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+  <title>MovingParts: Motion-based 3D Part Discovery in Dynamic Radiance Field</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/dics/src/original/dics.original.css">
+  <script src="./static/dics/src/original/dics.original.js"></script>
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="stylesheet" href="./static/css/dics.original.css">
+  <link rel="icon" href="./static/images/icon.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+
+  <script>
+
+      document.addEventListener('DOMContentLoaded', domReady);
+
+      function domReady() {
+          new Dics({
+            container: document.querySelectorAll('.b-dics')[0],
+            linesOrientation: 'horizontal',
+            textPosition: 'top',
+            linesColor: 'rgb(75,75,75)'
+          });
+
+          new Dics({
+            container: document.querySelectorAll('.b-dics')[1],
+            linesOrientation: 'horizontal',
+            textPosition: 'top',
+            linesColor: 'rgb(75,75,75)'
+          });
+
+          new Dics({
+            container: document.querySelectorAll('.b-dics')[2],
+            linesOrientation: 'horizontal',
+            textPosition: 'top',
+            linesColor: 'rgb(75,75,75)'
+          });
+
+          new Dics({
+            container: document.querySelectorAll('.b-dics')[3],
+            linesOrientation: 'horizontal',
+            textPosition: 'top',
+            linesColor: 'rgb(75,75,75)'
+          });
+
+          new Dics({
+            container: document.querySelectorAll('.b-dics')[4],
+            linesOrientation: 'horizontal',
+            textPosition: 'top',
+            linesColor: 'rgb(75,75,75)'
+          });
+
+          new Dics({
+            container: document.querySelectorAll('.b-dics')[5],
+            linesOrientation: 'horizontal',
+            textPosition: 'top',
+          });
+          new Dics({
+            container: document.querySelectorAll('.b-dics')[6],
+            linesOrientation: 'horizontal',
+            textPosition: 'top',
+          });
+          new Dics({
+            container: document.querySelectorAll('.b-dics')[7],
+            linesOrientation: 'horizontal',
+            textPosition: 'top',
+          });
+          new Dics({
+            container: document.querySelectorAll('.b-dics')[8],
+            linesOrientation: 'horizontal',
+            textPosition: 'top',
+          });
+          new Dics({
+            container: document.querySelectorAll('.b-dics')[9],
+            linesOrientation: 'horizontal',
+            textPosition: 'top',
+          });
+          new Dics({
+            container: document.querySelectorAll('.b-dics')[10],
+            linesOrientation: 'horizontal',
+            textPosition: 'top',
+          });
+      }
+  </script>
+
+</head>
+<body>
+
+<!-- ############################################################################################### -->
+<section class="section">
+  <div class="container is-max-desktop " >
+    <div class="column is-centered">
+
+      <div class="column has-text-centered">
+        <h1 class="title is-1 publication-title">MovingParts: Motion-based 3D Part Discovery in Dynamic Radiance Field</h1>
+    </div>
+    </div>
+
+    <!-- abstraction -->
+    <div class="columns is-centered has-text-centered">
+        <div class="column">
+          <h2 class="title is-3">Overview</h2>
+          <div class="content has-text-justified">
+            <p>
+              Hello, based on the comments of the reviewers, we have created this webpage to visualize the results of our experiments. 
+              It includes the results of D-NeRF synthesized data, the dataset generated by the paper based on Kubric and the video results, 
+              the results in real data and real scenario editing, the results in robot manipulation scenarios (the real data and the synthesized one).
+            </p>
+          </div>
+        </div>
+    </div>
+    <!-- abstraction -->
+
+    <br>
+
+    <!-- D-NeRF -->
+    <div class="container is-max-desktop">
+        <br>
+        <div class="columns is-centered has-text-centered">
+            <div class="column">
+              <h2 class="title is-3">Results on D-NeRF Synthetic Dataset</h2>
+            </div>
+        </div>
+        <br>
+        <div class="columns is-centered">
+    
+            <div class="column has-text-centered">
+                <div class="content">
+                <h2 class="title is-5">Bouncingballs</h2>
+                <video id="bouncingballs" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/dnerf/bouncingballs.mp4"
+                        type="video/mp4">
+                </video>
+                </div>
+            </div>
+  
+            <div class="column has-text-centered">
+                <div class="content">
+                <h2 class="title is-5">Lego</h2>
+                <video id="lego" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/dnerf/lego.mp4"
+                        type="video/mp4">
+                </video>
+                </div>
+            </div>
+  
+        </div>
+  
+        <div class="columns is-centered">
+    
+            <div class="column has-text-centered">
+                <div class="content">
+                <h2 class="title is-5">Hellwarrior</h2>
+                <video id="hellwarrior" autoplay controls muted loop playsinline height="100%">
+                    <source src="./static/videos/dnerf/hellwarrior.mp4"
+                            type="video/mp4">
+                </video>
+                </div>
+            </div>
+  
+            <div class="column has-text-centered">
+                <div class="content">
+                <h2 class="title is-5">Mutant</h2>
+                <video id="mutant" autoplay controls muted loop playsinline height="100%">
+                    <source src="./static/videos/dnerf/mutant.mp4"
+                            type="video/mp4">
+                </video>
+                </div>
+            </div>
+            
+        </div>
+  
+        <div class="columns is-centered">
+    
+            <div class="column has-text-centered">
+                <div class="content">
+                <h2 class="title is-5">Trex</h2>
+                <video id="trex" autoplay controls muted loop playsinline height="100%">
+                    <source src="./static/videos/dnerf/trex.mp4"
+                            type="video/mp4">
+                </video>
+                </div>
+            </div>
+  
+            <div class="column has-text-centered">
+              <div class="content">
+                <h2 class="title is-5">Hook</h2>
+                <video id="hook" autoplay controls muted loop playsinline height="100%">
+                  <source src="./static/videos/dnerf/hook.mp4"
+                          type="video/mp4">
+                </video>
+              </div>
+            </div>
+            
+        </div>
+
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+              <div class="content">
+              <h2 class="title is-6">Rendered Video</h2>
+              </div>
+          </div>
+
+          <div class="column has-text-centered">
+              <div class="content">
+              <h2 class="title is-6">Rendered Depth</h2>
+              </div>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="content">
+            <h2 class="title is-6">Segmentation</h2>
+            </div>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="content">
+            <h2 class="title is-6">Rendered Video</h2>
+            </div>
+        </div>
+
+        <div class="column has-text-centered">
+            <div class="content">
+            <h2 class="title is-6">Rendered Depth</h2>
+            </div>
+        </div>
+
+        <div class="column has-text-centered">
+          <div class="content">
+          <h2 class="title is-6">Segmentation</h2>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- D-NeRF -->
+
+    <br>
+
+    <!-- Kubric -->
+    <div class="container is-max-desktop">
+        <br>
+        <div class="columns is-centered has-text-centered">
+            <div class="column">
+              <h2 class="title is-3">Generated Kubric-based Dataset and Results</h2>
+            </div>
+        </div>
+        <br>
+
+        <div class="columns is-centered">
+    
+            <div class="column has-text-centered">
+                <div class="content">
+                <video id="0" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/kubric/0-001_video.rgb.mp4"
+                        type="video/mp4">
+                </video>
+                </div>
+            </div>
+
+            <div class="column has-text-centered">
+                <div class="content">
+                <video id="0" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/kubric/0-001_video.depth.mp4"
+                        type="video/mp4">
+                </video>
+                </div>
+            </div>
+
+            <div class="column has-text-centered">
+                <div class="content">
+                <video id="0" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/kubric/0-001_video.seg_mask.mp4"
+                        type="video/mp4">
+                </video>
+                </div>
+            </div>
+
+            <div class="column has-text-centered">
+                <div class="content">
+                <video id="0" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/kubric/2-001_video.rgb.mp4"
+                        type="video/mp4">
+                </video>
+                </div>
+            </div>
+
+            <div class="column has-text-centered">
+                <div class="content">
+                <video id="0" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/kubric/2-001_video.depth.mp4"
+                        type="video/mp4">
+                </video>
+                </div>
+            </div>
+
+            <div class="column has-text-centered">
+                <div class="content">
+                <video id="0" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/kubric/2-001_video.seg_mask.mp4"
+                        type="video/mp4">
+                </video>
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="columns is-centered">
+    
+            <div class="column has-text-centered">
+                <div class="content">
+                <video id="0" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/kubric/3-001_video.rgb.mp4"
+                        type="video/mp4">
+                </video>
+                </div>
+            </div>
+
+            <div class="column has-text-centered">
+                <div class="content">
+                <video id="0" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/kubric/3-001_video.depth.mp4"
+                        type="video/mp4">
+                </video>
+                </div>
+            </div>
+
+            <div class="column has-text-centered">
+                <div class="content">
+                <video id="0" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/kubric/3-001_video.seg_mask.mp4"
+                        type="video/mp4">
+                </video>
+                </div>
+            </div>
+
+            <div class="column has-text-centered">
+                <div class="content">
+                <video id="0" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/kubric/4-001_video.rgb.mp4"
+                        type="video/mp4">
+                </video>
+                </div>
+            </div>
+
+            <div class="column has-text-centered">
+                <div class="content">
+                <video id="0" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/kubric/4-001_video.depth.mp4"
+                        type="video/mp4">
+                </video>
+                </div>
+            </div>
+
+            <div class="column has-text-centered">
+                <div class="content">
+                <video id="0" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/kubric/4-001_video.seg_mask.mp4"
+                        type="video/mp4">
+                </video>
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="columns is-centered">
+    
+            <div class="column has-text-centered">
+                <div class="content">
+                <video id="0" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/kubric/5-001_video.rgb.mp4"
+                        type="video/mp4">
+                </video>
+                </div>
+            </div>
+
+            <div class="column has-text-centered">
+                <div class="content">
+                <video id="0" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/kubric/5-001_video.depth.mp4"
+                        type="video/mp4">
+                </video>
+                </div>
+            </div>
+
+            <div class="column has-text-centered">
+                <div class="content">
+                <video id="0" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/kubric/5-001_video.seg_mask.mp4"
+                        type="video/mp4">
+                </video>
+                </div>
+            </div>
+
+            <div class="column has-text-centered">
+                <div class="content">
+                <video id="0" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/kubric/6-001_video.rgb.mp4"
+                        type="video/mp4">
+                </video>
+                </div>
+            </div>
+
+            <div class="column has-text-centered">
+                <div class="content">
+                <video id="0" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/kubric/6-001_video.depth.mp4"
+                        type="video/mp4">
+                </video>
+                </div>
+            </div>
+
+            <div class="column has-text-centered">
+                <div class="content">
+                <video id="0" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/kubric/6-001_video.seg_mask.mp4"
+                        type="video/mp4">
+                </video>
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="columns is-centered">
+    
+            <div class="column has-text-centered">
+                <div class="content">
+                <video id="0" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/kubric/7-001_video.rgb.mp4"
+                        type="video/mp4">
+                </video>
+                </div>
+            </div>
+
+            <div class="column has-text-centered">
+                <div class="content">
+                <video id="0" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/kubric/7-001_video.depth.mp4"
+                        type="video/mp4">
+                </video>
+                </div>
+            </div>
+
+            <div class="column has-text-centered">
+                <div class="content">
+                <video id="0" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/kubric/7-001_video.seg_mask.mp4"
+                        type="video/mp4">
+                </video>
+                </div>
+            </div>
+
+            <div class="column has-text-centered">
+                <div class="content">
+                <video id="0" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/kubric/10-001_video.rgb.mp4"
+                        type="video/mp4">
+                </video>
+                </div>
+            </div>
+
+            <div class="column has-text-centered">
+                <div class="content">
+                <video id="0" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/kubric/10-001_video.depth.mp4"
+                        type="video/mp4">
+                </video>
+                </div>
+            </div>
+
+            <div class="column has-text-centered">
+                <div class="content">
+                <video id="0" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/kubric/10-001_video.seg_mask.mp4"
+                        type="video/mp4">
+                </video>
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="columns is-centered">
+    
+            <div class="column has-text-centered">
+                <div class="content">
+                <video id="0" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/kubric/13-001_video.rgb.mp4"
+                        type="video/mp4">
+                </video>
+                </div>
+            </div>
+
+            <div class="column has-text-centered">
+                <div class="content">
+                <video id="0" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/kubric/13-001_video.depth.mp4"
+                        type="video/mp4">
+                </video>
+                </div>
+            </div>
+
+            <div class="column has-text-centered">
+                <div class="content">
+                <video id="0" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/kubric/13-001_video.seg_mask.mp4"
+                        type="video/mp4">
+                </video>
+                </div>
+            </div>
+            
+            <div class="column has-text-centered">
+                <div class="content">
+                <video id="0" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/kubric/14-001_video.rgb.mp4"
+                        type="video/mp4">
+                </video>
+                </div>
+            </div>
+
+            <div class="column has-text-centered">
+                <div class="content">
+                <video id="0" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/kubric/14-001_video.depth.mp4"
+                        type="video/mp4">
+                </video>
+                </div>
+            </div>
+
+            <div class="column has-text-centered">
+                <div class="content">
+                <video id="0" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/kubric/14-001_video.seg_mask.mp4"
+                        type="video/mp4">
+                </video>
+                </div>
+            </div>
+        </div>
+
+        <div class="columns is-centered">
+    
+            <div class="column has-text-centered">
+                <div class="content">
+                <video id="0" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/kubric/15-001_video.rgb.mp4"
+                        type="video/mp4">
+                </video>
+                </div>
+            </div>
+
+            <div class="column has-text-centered">
+                <div class="content">
+                <video id="0" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/kubric/15-001_video.depth.mp4"
+                        type="video/mp4">
+                </video>
+                </div>
+            </div>
+
+            <div class="column has-text-centered">
+                <div class="content">
+                <video id="0" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/kubric/15-001_video.seg_mask.mp4"
+                        type="video/mp4">
+                </video>
+                </div>
+            </div>
+            
+            <div class="column has-text-centered">
+                <div class="content">
+                <video id="0" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/kubric/17-001_video.rgb.mp4"
+                        type="video/mp4">
+                </video>
+                </div>
+            </div>
+
+            <div class="column has-text-centered">
+                <div class="content">
+                <video id="0" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/kubric/17-001_video.depth.mp4"
+                        type="video/mp4">
+                </video>
+                </div>
+            </div>
+
+            <div class="column has-text-centered">
+                <div class="content">
+                <video id="0" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/kubric/17-001_video.seg_mask.mp4"
+                        type="video/mp4">
+                </video>
+                </div>
+            </div>
+        </div>
+
+        <div class="columns is-centered">
+    
+            <div class="column has-text-centered">
+                <div class="content">
+                <video id="0" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/kubric/19-001_video.rgb.mp4"
+                        type="video/mp4">
+                </video>
+                </div>
+            </div>
+
+            <div class="column has-text-centered">
+                <div class="content">
+                <video id="0" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/kubric/19-001_video.depth.mp4"
+                        type="video/mp4">
+                </video>
+                </div>
+            </div>
+
+            <div class="column has-text-centered">
+                <div class="content">
+                <video id="0" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/kubric/19-001_video.seg_mask.mp4"
+                        type="video/mp4">
+                </video>
+                </div>
+            </div>
+            
+            <div class="column has-text-centered">
+                <div class="content">
+                <video id="0" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/kubric/20-001_video.rgb.mp4"
+                        type="video/mp4">
+                </video>
+                </div>
+            </div>
+
+            <div class="column has-text-centered">
+                <div class="content">
+                <video id="0" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/kubric/20-001_video.depth.mp4"
+                        type="video/mp4">
+                </video>
+                </div>
+            </div>
+
+            <div class="column has-text-centered">
+                <div class="content">
+                <video id="0" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/kubric/20-001_video.seg_mask.mp4"
+                        type="video/mp4">
+                </video>
+                </div>
+            </div>
+        </div>
+
+        <div class="columns is-centered">
+    
+            <div class="column has-text-centered">
+                <div class="content">
+                <video id="0" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/kubric/21-001_video.rgb.mp4"
+                        type="video/mp4">
+                </video>
+                </div>
+            </div>
+
+            <div class="column has-text-centered">
+                <div class="content">
+                <video id="0" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/kubric/21-001_video.depth.mp4"
+                        type="video/mp4">
+                </video>
+                </div>
+            </div>
+
+            <div class="column has-text-centered">
+                <div class="content">
+                <video id="0" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/kubric/21-001_video.seg_mask.mp4"
+                        type="video/mp4">
+                </video>
+                </div>
+            </div>
+            
+            <div class="column has-text-centered">
+                <div class="content">
+                <video id="0" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/kubric/23-001_video.rgb.mp4"
+                        type="video/mp4">
+                </video>
+                </div>
+            </div>
+
+            <div class="column has-text-centered">
+                <div class="content">
+                <video id="0" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/kubric/23-001_video.depth.mp4"
+                        type="video/mp4">
+                </video>
+                </div>
+            </div>
+
+            <div class="column has-text-centered">
+                <div class="content">
+                <video id="0" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/kubric/23-001_video.seg_mask.mp4"
+                        type="video/mp4">
+                </video>
+                </div>
+            </div>
+        </div>
+
+        <div class="columns is-centered">
+    
+            <div class="column has-text-centered">
+                <div class="content">
+                <video id="0" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/kubric/27-001_video.rgb.mp4"
+                        type="video/mp4">
+                </video>
+                </div>
+            </div>
+
+            <div class="column has-text-centered">
+                <div class="content">
+                <video id="0" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/kubric/27-001_video.depth.mp4"
+                        type="video/mp4">
+                </video>
+                </div>
+            </div>
+
+            <div class="column has-text-centered">
+                <div class="content">
+                <video id="0" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/kubric/27-001_video.seg_mask.mp4"
+                        type="video/mp4">
+                </video>
+                </div>
+            </div>
+            
+            <div class="column has-text-centered">
+                <div class="content">
+                <video id="0" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/kubric/28-001_video.rgb.mp4"
+                        type="video/mp4">
+                </video>
+                </div>
+            </div>
+
+            <div class="column has-text-centered">
+                <div class="content">
+                <video id="0" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/kubric/28-001_video.depth.mp4"
+                        type="video/mp4">
+                </video>
+                </div>
+            </div>
+
+            <div class="column has-text-centered">
+                <div class="content">
+                <video id="0" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/kubric/28-001_video.seg_mask.mp4"
+                        type="video/mp4">
+                </video>
+                </div>
+            </div>
+        </div>
+
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+              <div class="content">
+              <h2 class="title is-6">Rendered Video</h2>
+              </div>
+          </div>
+
+          <div class="column has-text-centered">
+              <div class="content">
+              <h2 class="title is-6">Rendered Depth</h2>
+              </div>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="content">
+            <h2 class="title is-6">Segmentation</h2>
+            </div>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="content">
+            <h2 class="title is-6">Rendered Video</h2>
+            </div>
+        </div>
+
+        <div class="column has-text-centered">
+            <div class="content">
+            <h2 class="title is-6">Rendered Depth</h2>
+            </div>
+        </div>
+
+        <div class="column has-text-centered">
+          <div class="content">
+          <h2 class="title is-6">Segmentation</h2>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+    <!-- Kubric -->
+
+    <br>
+
+    <!-- Real world -->
+    <div class="container is-max-desktop">
+        <br>
+        <div class="columns is-centered has-text-centered">
+            <div class="column">
+              <h2 class="title is-3">Application: Real-world Scene Part Discovery and Editing</h2>
+            </div>
+        </div>
+        <h2 class="title is-4">Real-world Scene Part Discovery</h2>
+
+        <div class="columns is-centered">
+    
+            <div class="column has-text-centered">
+                <div class="content">
+                <video id="0" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/hypernerf/broom_000_video.rgb.mp4"
+                        type="video/mp4">
+                </video>
+                </div>
+            </div>
+
+            <div class="column has-text-centered">
+                <div class="content">
+                <video id="0" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/hypernerf/broom_000_video.depth.mp4"
+                        type="video/mp4">
+                </video>
+                </div>
+            </div>
+
+            <div class="column has-text-centered">
+                <div class="content">
+                <video id="0" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/hypernerf/broom_000_video.seg.mp4"
+                        type="video/mp4">
+                </video>
+                </div>
+            </div>
+
+            <div class="column has-text-centered">
+                <div class="content">
+                <video id="0" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/hypernerf/vrig-chicken_000_video.rgb.mp4"
+                        type="video/mp4">
+                </video>
+                </div>
+            </div>
+
+            <div class="column has-text-centered">
+                <div class="content">
+                <video id="0" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/hypernerf/vrig-chicken_000_video.depth.mp4"
+                        type="video/mp4">
+                </video>
+                </div>
+            </div>
+
+            <div class="column has-text-centered">
+                <div class="content">
+                <video id="0" autoplay controls muted loop playsinline height="100%">
+                <source src="./static/videos/hypernerf/vrig-chicken_000_video.seg.mp4"
+                        type="video/mp4">
+                </video>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+              <div class="content">
+              <h2 class="title is-6">Rendered Video</h2>
+              </div>
+          </div>
+
+          <div class="column has-text-centered">
+              <div class="content">
+              <h2 class="title is-6">Rendered Depth</h2>
+              </div>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="content">
+            <h2 class="title is-6">Segmentation</h2>
+            </div>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="content">
+            <h2 class="title is-6">Rendered Video</h2>
+            </div>
+        </div>
+
+        <div class="column has-text-centered">
+            <div class="content">
+            <h2 class="title is-6">Rendered Depth</h2>
+            </div>
+        </div>
+
+        <div class="column has-text-centered">
+          <div class="content">
+          <h2 class="title is-6">Segmentation</h2>
+          </div>
+        </div>
+
+      </div>
+
+        <h2 class="title is-4">Real-world Scene Editing</h2>
+
+        <div class="columns is-centered">
+            <div class="column has-text-centered">
+                <div class="b-dics horizontal">
+                  <img id="img11" src="./static/videos/editing/Real1.png">
+                  <img id="img12" src="./static/videos/editing/Real1_seg.png">
+                </div>
+                <!-- <p class="is-bold">Comparison</p> -->
+            </div>
+    
+            <div class="column has-text-centered">
+              <div class="b-dics">
+                <img id="img13" src="./static/videos/editing/Real1.png">
+                <img id="img14" src="./static/videos/editing/Real1_removal.png">
+              </div>
+              <!-- <p class="is-bold">Removal</p> -->
+            </div>
+    
+            <div class="column has-text-centered">
+              <div class="b-dics">
+                <img id="img15" src="./static/videos/editing/Real1.png">
+                <img id="img16" src="./static/videos/editing/Real1_mod.png">
+              </div>
+              <!-- <p class="is-bold">Modification</p> -->
+            </div>
+    
+            <div class="column has-text-centered">
+              <div class="b-dics">
+                <img id="img17" src="./static/videos/editing/Real2.png">
+                <img id="img18" src="./static/videos/editing/Real2_seg.png">
+              </div>
+              <!-- <p class="is-bold">Comparison</p> -->
+            </div>   
+    
+            <div class="column has-text-centered">
+              <div class="b-dics">
+                <img id="img19" src="./static/videos/editing/Real2.png">
+                <img id="img20" src="./static/videos/editing/Real2_removal.png">
+              </div>
+              <!-- <p class="is-bold">Removal</p> -->
+            </div>
+            
+            <div class="column has-text-centered">
+              <div class="b-dics">
+                <img id="img21" src="./static/videos/editing/Real2.png">
+                <img id="img22" src="./static/videos/editing/Real2_mod.png">
+              </div>
+              <!-- <p class="is-bold">Modification</p> -->
+            </div>
+          </div>
+
+          <div class="columns is-centered">
+            <div class="column has-text-centered">
+                <div class="content">
+                <h2 class="title is-6">Comparison</h2>
+                </div>
+            </div>
+  
+            <div class="column has-text-centered">
+                <div class="content">
+                <h2 class="title is-6">Removal</h2>
+                </div>
+            </div>
+  
+            <div class="column has-text-centered">
+              <div class="content">
+              <h2 class="title is-6">Modification</h2>
+              </div>
+            </div>
+  
+            <div class="column has-text-centered">
+              <div class="content">
+              <h2 class="title is-6">Comparison</h2>
+              </div>
+          </div>
+  
+          <div class="column has-text-centered">
+              <div class="content">
+              <h2 class="title is-6">Removal</h2>
+              </div>
+          </div>
+  
+          <div class="column has-text-centered">
+            <div class="content">
+            <h2 class="title is-6">Comparison</h2>
+            </div>
+          </div>
+  
+        </div>
+
+    </div>
+    <!-- Real world -->
+    
+    <br>
+
+    <!-- Robotic Manipulation -->
+    <div class="container is-max-desktop">
+        <br>
+        <div class="columns is-centered has-text-centered">
+            <div class="column">
+              <h2 class="title is-3">Application: Robotic Manipulation</h2>
+            </div>
+        </div>
+
+        <h2 class="title is-4">Real-world Robotic Manipulation</h2>
+
+        <div class="columns is-centered">
+    
+          <div class="column has-text-centered">
+              <div class="content">
+              <video id="0" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/realrobot/023_video.rgb.mp4"
+                      type="video/mp4">
+              </video>
+              </div>
+          </div>
+
+          <div class="column has-text-centered">
+              <div class="content">
+              <video id="0" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/realrobot/023_video.depth.mp4"
+                      type="video/mp4">
+              </video>
+              </div>
+          </div>
+
+          <div class="column has-text-centered">
+              <div class="content">
+              <video id="0" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/realrobot/023_video.seg.mp4"
+                      type="video/mp4">
+              </video>
+              </div>
+          </div>
+
+          <div class="column has-text-centered">
+              <div class="content">
+              <video id="0" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/realrobot/025_video.rgb.mp4"
+                      type="video/mp4">
+              </video>
+              </div>
+          </div>
+
+          <div class="column has-text-centered">
+              <div class="content">
+              <video id="0" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/realrobot/025_video.depth.mp4"
+                      type="video/mp4">
+              </video>
+              </div>
+          </div>
+
+          <div class="column has-text-centered">
+              <div class="content">
+              <video id="0" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/realrobot/025_video.seg.mp4"
+                      type="video/mp4">
+              </video>
+              </div>
+          </div>
+
+      </div>
+
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+            <div class="content">
+            <h2 class="title is-6">Comparison</h2>
+            </div>
+        </div>
+
+        <div class="column has-text-centered">
+            <div class="content">
+            <h2 class="title is-6">Removal</h2>
+            </div>
+        </div>
+
+        <div class="column has-text-centered">
+          <div class="content">
+          <h2 class="title is-6">Modification</h2>
+          </div>
+        </div>
+
+        <div class="column has-text-centered">
+          <div class="content">
+          <h2 class="title is-6">Comparison</h2>
+          </div>
+      </div>
+
+      <div class="column has-text-centered">
+          <div class="content">
+          <h2 class="title is-6">Removal</h2>
+          </div>
+      </div>
+
+      <div class="column has-text-centered">
+        <div class="content">
+        <h2 class="title is-6">Comparison</h2>
+        </div>
+      </div>
+
+    </div>
+
+      <h2 class="title is-4">Synthetic Robotic Manipulation</h2>
+
+        <div class="columns is-vcentered interpolation-panel">
+            <div class="column is-3 has-text-centered">
+              <img src="./static/images/start.png"
+                   class="interpolation-image"
+                   alt="Interpolate start reference image."/>
+              <p>Start Frame</p>
+            </div>
+            <div class="column interpolation-video-column">
+              <div id="interpolation-image-wrapper">
+                Loading...
+              </div>
+              <input class="slider is-fullwidth is-large is-info"
+                     id="interpolation-slider"
+                     step="1" min="0" max="100" value="0" type="range">
+            </div>
+            <div class="column is-3 has-text-centered">
+              <img src="./static/images/end.png"
+                   class="interpolation-image"
+                   alt="Interpolation end reference image."/>
+              <p class="is-bold">End Frame</p>
+            </div>
+        </div>
+
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <div class="content">
+            <h2 class="title is-6">Replay</h2>
+            </div>
+          </div>
+  
+        </div>
+
+        <div class="columns is-centered">
+
+            <div class="column has-text-centered">
+                <div class="b-dics horizontal">
+                  <img id="img1" src="./static/videos/editing/Syn.png">
+                  <img id="img2" src="./static/videos/editing/Syn_tracking.png">
+                </div>
+                <!-- <p class="is-bold">Tracking</p> -->
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="b-dics">
+                <img id="img1" src="./static/videos/editing/Syn.png">
+                <img id="img2" src="./static/videos/editing/Syn_duplication.png">
+              </div>
+              <!-- <p class="is-bold">Duplication</p> -->
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="b-dics">
+                <img id="img1" src="./static/videos/editing/Syn.png">
+                <img id="img2" src="./static/videos/editing/Syn_removal.png">
+              </div>
+              <!-- <p class="is-bold">Removal</p> -->
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="b-dics">
+                <img id="img1" src="./static/videos/editing/Syn.png">
+                <img id="img2" src="./static/videos/editing/Syn_rescaling.png">
+              </div>
+              <!-- <p class="is-bold">Rescaling</p> -->
+            </div>   
+
+            <div class="column has-text-centered">
+              <div class="b-dics">
+                <img id="img1" src="./static/videos/editing/Syn.png">
+                <img id="img2" src="./static/videos/editing/Syn_reposing.png">
+              </div>
+              <!-- <p class="is-bold">Reposing</p> -->
+            </div>
+
+        </div>
+
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+              <div class="content">
+              <h2 class="title is-6">Tracking</h2>
+              </div>
+          </div>
+  
+          <div class="column has-text-centered">
+              <div class="content">
+              <h2 class="title is-6">Duplication</h2>
+              </div>
+          </div>
+  
+          <div class="column has-text-centered">
+            <div class="content">
+            <h2 class="title is-6">Removal</h2>
+            </div>
+          </div>
+  
+          <div class="column has-text-centered">
+            <div class="content">
+            <h2 class="title is-6">Rescaling</h2>
+            </div>
+        </div>
+  
+        <div class="column has-text-centered">
+            <div class="content">
+            <h2 class="title is-6">Reposing</h2>
+            </div>
+        </div>
+  
+      </div>
+
+    </div>
+    <!-- Robotic Manipulation -->
+
+</section>
+
+
+</body>
+</html>
