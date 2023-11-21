@@ -872,10 +872,10 @@
         </div>
 
         <div class="content has-text-justified">
-          Presented here are our results from real scenarios using the HyperNeRF dataset.
+          Presented here are our results on real scenarios dataset provided by HyperNeRF.
           Our approach achieves high quality rendering of dynamic scenes and successfully discovers the moving parts.
           In the Editing sub-section, we provide a comparison between our segmentation mask and the RGB image, demonstrating the precision with which our mask delineates the contours of the moving parts.
-          With the 3D level segmentation, we can easily edit and render the real scene to get a brand new image.
+          With the 3D part discovery, we can easily edit and render the real scene to get a brand new image.
         </div>
 
         <h2 class="title is-4">Real-world Scene Part Discovery</h2>
@@ -1315,13 +1315,14 @@
 
       <div class="content has-text-justified">
         Here we show visualization results of ablation experiments on the key modules and loss functions.
-        In experiment R1, we removed the Lagrangian module. 
+        We present our full model in experiment A1.
+        In experiment A2, we removed the Lagrangian module. 
         Although we still achieved high-quality rendering results, the absence of this module disabled the part discovery.
-        In experiment R2, we substituted the feature-based cycle consistency loss with a displacement-based alternative, resulting in inaccurate part discovery. 
+        In experiment A3, we substituted the feature-based cycle consistency loss with a displacement-based alternative, resulting in inaccurate part discovery. 
         This discrepancy arises because our grouping relies on motion features, but there is a polysemy between displacement and motion features.
-        As demonstrated in R4, the Total Variation (TV) loss, ensuring the similarity of motion among nearby points in space, plays a crucial role in motion learning. 
+        As demonstrated in A4, the Total Variation (TV) loss, ensuring the similarity of motion among nearby points in space, plays a crucial role in motion learning. 
         Upon the removal of the TV loss, particle motion becomes jittery, which also impacts the parts discovery.
-        In experiments R5 and R6, we verified that Cross-Entropy loss and Per-point RGB loss brought an improvement in rendering quality.
+        In experiments A5 and A6, we verified that Cross-Entropy loss and Per-point RGB loss brought an improvement in rendering quality.
         Notably, the removal of foreground-background cross-entropy loss may led to invisible ghosting in the background. 
         For a more detailed discussion of these ablation experiments, please refer to the Appendix in our paper.
       </div>
