@@ -1317,13 +1317,15 @@
         Here we show visualization results of ablation experiments on the key modules and loss functions.
         We present our full model in experiment A1.
         In experiment A2, we removed the Lagrangian module. 
-        Although we still achieved high-quality rendering results, the absence of this module disabled the part discovery.
-        In experiment A3, we substituted the feature-based cycle consistency loss with a displacement-based alternative, resulting in inaccurate part discovery. 
-        This discrepancy arises because our grouping relies on motion features, but there is a polysemy between displacement and motion features.
-        As demonstrated in A4, the Total Variation (TV) loss, ensuring the similarity of motion among nearby points in space, plays a crucial role in motion learning. 
-        Upon the removal of the TV loss, particle motion becomes jittery, which also impacts the parts discovery.
-        In experiments A5 and A6, we verified that Cross-Entropy loss and Per-point RGB loss brought an improvement in rendering quality.
-        Notably, the removal of foreground-background cross-entropy loss may led to invisible ghosting in the background. 
+        Although we still achieved high-quality rendering results, the absence of this module disabled the part discovery, which is the main focus of this work.
+        In experiment A3, we substituted the feature-based cycle consistency loss with a displacement-based alternative, resulting in a decline in PSNR and inaccurate part discovery. 
+        Since there exists inherent ambiguity between motion features and displacement, where multiple motion features may correspond to the same displacement, it poses a challenge to attaining precise part discovery based on motion feature grouping.
+        As demonstrated in A4, the Total Variation (TV) loss, which ensures the motion similarity among nearby points in space, plays a crucial role in motion learning. 
+        In its absence, there will be jitter and lead to a notable decline in image rendering quality.
+        Moreover, the unconstrained movement of nearby particles leads to a lack of spatially localized properties of the discovered parts.
+        In experiments A5 and A6, we verified that the removal of either Cross-Entropy loss or Per-point RGB loss brought a decline in rendering quality.
+        Notably, the foreground-background cross-entropy loss plays a crucial role in regulating foreground-background probability.
+        The removal of the cross-entropy loss may lead to invisible ghosting in the background. 
         For a more detailed discussion of these ablation experiments, please refer to the Appendix in our paper.
       </div>
 
@@ -1575,7 +1577,7 @@
         Here, we present visualizations of the Watch-It-Move results on the D-NeRF synthetic dataset. 
         The monocular setup of D-NeRF poses a significant challenge for Watch-It-Move, which relies on multi-view information. 
         While Watch-It-Move can approximate its image within the training view, it encounters a failure when applied to the test view.
-        Examining the fixed view rendering in the last two columns, it can be seen that the part segmentation is inaccurate, and the motion of each part appears disorderly.
+        It can be seen that in the fixed view rendering in the last two columns, the part segmentation is inaccurate, and the motion of each part appears messy.
       </div>
 
       <div class="columns is-centered">
