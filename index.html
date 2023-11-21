@@ -1323,12 +1323,34 @@
         Upon the removal of the TV loss, particle motion becomes jittery, which also impacts the parts discovery.
         In experiments R5 and R6, we verified that Cross-Entropy loss and Per-point RGB loss brought an improvement in rendering quality.
         Notably, the removal of foreground-background cross-entropy loss may led to invisible ghosting in the background. 
-        For a more detailed discussion of these ablation experiments, please refer to the appendix in our paper.
+        For a more detailed discussion of these ablation experiments, please refer to the Appendix in our paper.
       </div>
+
+      <!-- table -->
+      <div class="columns is-centered">
+
+        <div class="column has-text-centered">
+            <div class="content">
+              <img id="img11" src="./static/videos/ablation/ablation_table.png", width="700">
+            </div>
+        </div>
+        
+      </div>
+      <!-- table -->
+
 
       <!-- RGB rendering -->
       <div class="columns is-centered">
-  
+
+        <div class="column has-text-centered">
+          <div class="content">
+          <video id="0" autoplay controls muted loop playsinline height="50%">
+          <source src="./static/videos/ablation/baseline/025_video.rgb.mp4"
+                  type="video/mp4">
+          </video>
+          </div>
+        </div>
+
         <div class="column has-text-centered">
             <div class="content">
             <video id="0" autoplay controls muted loop playsinline height="50%">
@@ -1342,15 +1364,6 @@
           <div class="content">
           <video id="0" autoplay controls muted loop playsinline height="50%">
           <source src="./static/videos/ablation/deform_cycle/025_video.rgb.mp4"
-                  type="video/mp4">
-          </video>
-          </div>
-        </div>
-
-        <div class="column has-text-centered">
-          <div class="content">
-          <video id="0" autoplay controls muted loop playsinline height="50%">
-          <source src="./static/videos/ablation/baseline/025_video.rgb.mp4"
                   type="video/mp4">
           </video>
           </div>
@@ -1390,6 +1403,15 @@
       <div class="columns is-centered">
   
         <div class="column has-text-centered">
+          <div class="content">
+          <video id="0" autoplay controls muted loop playsinline height="50%">
+          <source src="./static/videos/ablation/baseline/025_video.depth.mp4"
+                  type="video/mp4">
+          </video>
+          </div>
+        </div>
+
+        <div class="column has-text-centered">
             <div class="content">
             <video id="0" autoplay controls muted loop playsinline height="50%">
             <source src="./static/videos/ablation/wo_languagian/025_video.depth.mp4"
@@ -1402,15 +1424,6 @@
           <div class="content">
           <video id="0" autoplay controls muted loop playsinline height="50%">
           <source src="./static/videos/ablation/deform_cycle/025_video.depth.mp4"
-                  type="video/mp4">
-          </video>
-          </div>
-        </div>
-
-        <div class="column has-text-centered">
-          <div class="content">
-          <video id="0" autoplay controls muted loop playsinline height="50%">
-          <source src="./static/videos/ablation/baseline/025_video.depth.mp4"
                   type="video/mp4">
           </video>
           </div>
@@ -1450,6 +1463,15 @@
       <div class="columns is-centered">
 
         <div class="column has-text-centered">
+          <div class="content">
+          <video id="0" autoplay controls muted loop playsinline height="50%">
+          <source src="./static/videos/ablation/baseline/025_video.seg.mp4"
+                  type="video/mp4">
+          </video>
+          </div>
+        </div>
+
+        <div class="column has-text-centered">
             <div class="content">
               <img id="img11" src="./static/videos/ablation/wo_languagian/Nothing.png">
             </div>
@@ -1459,15 +1481,6 @@
           <div class="content">
           <video id="0" autoplay controls muted loop playsinline height="50%">
           <source src="./static/videos/ablation/deform_cycle/025_video.seg.mp4"
-                  type="video/mp4">
-          </video>
-          </div>
-        </div>
-
-        <div class="column has-text-centered">
-          <div class="content">
-          <video id="0" autoplay controls muted loop playsinline height="50%">
-          <source src="./static/videos/ablation/baseline/025_video.seg.mp4"
                   type="video/mp4">
           </video>
           </div>
@@ -1506,37 +1519,38 @@
       <div class="columns is-centered">
           <div class="column has-text-centered">
             <div class="content">
-            <h2 class="title is-6">R1: <br>No Languagian Module</h2>
+            <h2 class="title is-6">A1: <br>Feature-based Cycle Loss <br> <span style="color: red;">(Our Full Model)</span> </h2>
+
             </div>
           </div>
 
           <div class="column has-text-centered">
             <div class="content">
-            <h2 class="title is-6">R2: <br>Displacement-based Cycle Loss</h2>
+            <h2 class="title is-6">A2: <br>No Languagian Module</h2>
             </div>
           </div>
 
           <div class="column has-text-centered">
             <div class="content">
-            <h2 class="title is-6">R3: <br>Feature-based Cycle Loss <br> (Our Full Model)</h2>
+            <h2 class="title is-6">A3: <br>Displacement-based Cycle Loss</h2>
             </div>
           </div>
 
           <div class="column has-text-centered">
             <div class="content">
-            <h2 class="title is-6">R4: <br>Without TV Loss</h2>
+            <h2 class="title is-6">A4: <br>Without TV Loss</h2>
             </div>
           </div>
 
           <div class="column has-text-centered">
             <div class="content">
-            <h2 class="title is-6">R5: <br>Without Entropy Loss</h2>
+            <h2 class="title is-6">A5: <br>Without Entropy Loss</h2>
             </div>
           </div>
 
           <div class="column has-text-centered">
             <div class="content">
-            <h2 class="title is-6">R6: <br>Without Per-point Loss</h2>
+            <h2 class="title is-6">A6: <br>Without Per-point Loss</h2>
             </div>
           </div>
 
@@ -1552,7 +1566,7 @@
       <br>
       <div class="columns is-centered has-text-centered">
           <div class="column">
-            <h2 class="title is-3">For Reviewer qQod: Watch-It-Move on D-NeRF Dataset</h2>
+            <h2 class="title is-3">Watch-It-Move on D-NeRF Dataset</h2>
           </div>
       </div>
 
